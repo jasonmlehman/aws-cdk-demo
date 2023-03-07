@@ -71,7 +71,7 @@ This uses GRC syntax, the syntax is of the form: git clone codecommit::**region*
 
 Since the whole goal here is to have CodeCommit and CDK Pipelines running in the platform account, but deploying to the Dev (test/prod) account, we need to bootstrap the Dev account so that it trusts the Platform account.  To do this you'll need the account number of the Platform and dev account.  You can get this by running the following command: \
 
-aws sts get-caller-identity --query "Account" --profile cdk-demo-platform
+aws sts get-caller-identity --query "Account" --profile cdk-demo-platform\
 aws sts get-caller-identity --query "Account" --profile cdk-demo-dev
 
-> 1. Run: ** cdk bootstrap --profile cdk-demo-dev --trust **Platform Account Number** aws://**Dev Account Number**/us-east-1
+> 1. Run: **cdk bootstrap --profile cdk-demo-dev --trust "Platform Account Number" aws://"Dev Account Number"/us-east-1**
