@@ -74,6 +74,6 @@ Since the whole goal here is to have CodeCommit and CDK Pipelines running in the
 aws sts get-caller-identity --query "Account" --profile cdk-demo-platform\
 aws sts get-caller-identity --query "Account" --profile cdk-demo-dev
 
-Syntax for the trust is: **cdk bootstrap --profile cdk-demo-dev --trust "Platform Account Number" aws://"Dev Account Number"/us-east-1**
+Syntax for the trust is: **cdk bootstrap --profile awsprofile --cloudformation-execution-policies 'arn:aws:iam::aws:policy/AdministratorAccess' --trust "Platform Account Number" aws://"Dev Account Number"/us-east-1**
 
-> 1. Bootstrap Dev account replacing 0's with real account number: **cdk bootstrap --profile cdk-demo-dev --trust 000000000000 aws://000000000000/us-east-1**
+> 1. Bootstrap Dev account replacing 0's with real account number: **cdk bootstrap --profile cdk-demo-dev --cloudformation-execution-policies 'arn:aws:iam::aws:policy/AdministratorAccess' --trust 000000000000 aws://000000000000/us-east-1**
