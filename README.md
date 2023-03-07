@@ -20,7 +20,7 @@ Configuration of the CLI with a profile will be dependent on the setup of your e
 > 2. Add AWS SSO session: **aws configure sso-session**
 
 SSO session name: **Name your SSO Session**\
-SSO start URL [None]: **<Enter your start URL for your org**\
+SSO start URL [None]: **Enter the start URL for your org**\
 SSO region [None]: **<Enter your region>**\
 SSO registration scopes [sso:account:access]: **<Leave blank>**
 
