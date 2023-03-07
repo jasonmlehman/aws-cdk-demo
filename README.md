@@ -1,4 +1,4 @@
-# This CodeCommit repository can be used as a starting point for CDK deployments.\
+# This repository can be used as a starting point for CDK deployments.
 
 It includes all steps to how this repository and deployment pipelines were built, including the workstation setup.  The repository can simply be cloned locally and development can being immediately.
 
