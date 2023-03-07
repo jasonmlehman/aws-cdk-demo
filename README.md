@@ -21,7 +21,7 @@ Configuration of the CLI with a profile will be dependent on the setup of your e
 
 SSO session name: **Name your SSO Session**\
 SSO start URL [None]: **Enter the start URL for your org**\
-SSO region [None]: **<Enter your region>**\
+SSO region [None]: **Enter your region**\
 SSO registration scopes [sso:account:access]: **<Leave blank>**
 
 > 3. Add AWS SSO Platform Profile to session: **aws configure sso --profile cdk-demo-platform**
