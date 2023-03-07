@@ -76,4 +76,4 @@ aws sts get-caller-identity --query "Account" --profile cdk-demo-dev
 
 Syntax for the trust is: **cdk bootstrap --profile cdk-demo-dev --trust "Platform Account Number" aws://"Dev Account Number"/us-east-1**
 
-> 1. Bootstrap Dev account replacing 0's with real account number: cdk bootstrap --profile cdk-demo-dev --trust 000000000000 aws://000000000000/us-east-1
+> 1. Bootstrap Dev account replacing 0's with real account number: **cdk bootstrap --profile cdk-demo-dev --trust 000000000000 aws://000000000000/us-east-1**
