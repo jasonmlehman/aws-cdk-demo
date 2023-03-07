@@ -47,5 +47,5 @@ CLI default output format {None]: **json**
 ## Clone the repository locally.
 This uses GRC syntax, the syntax is of the form: git clone codecommit::**region**://**profile**@**repository name**:
 
-> 1. **git clone codecommit::us-east-1://cdk-demo-platform@cdk-wks-setup**
+> 1. **git clone codecommit::us-east-1://cdk-demo-platform@cdk-demo-repo**
 
