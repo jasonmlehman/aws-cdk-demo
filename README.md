@@ -65,4 +65,4 @@ This uses GRC syntax, the syntax is of the form: git clone codecommit::**region*
 
 ## Bootstrap Platform account
   
-> 1. Run: ** cdk bootstrap --profile cdk-demo-platform
+> 1. Run: **cdk bootstrap --profile cdk-demo-platform**
