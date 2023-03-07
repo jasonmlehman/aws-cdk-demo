@@ -77,3 +77,12 @@ aws sts get-caller-identity --query "Account" --profile cdk-demo-dev
 Syntax for the trust is: **cdk bootstrap --profile awsprofile --cloudformation-execution-policies 'arn:aws:iam::aws:policy/AdministratorAccess' --trust "Platform Account Number" aws://"Dev Account Number"/us-east-1**
 
 > 1. Bootstrap Dev account replacing 0's with real account number: **cdk bootstrap --profile cdk-demo-dev --cloudformation-execution-policies 'arn:aws:iam::aws:policy/AdministratorAccess' --trust 000000000000 aws://000000000000/us-east-1**
+
+## Add Platform and Dev account variables to cdk.json
+
+cdk.json is going to contain all parameter that are consumed by the constructs and app.py entry point
+
+> 1. Add the following section to the "context" section of cdk.json, replacing 0's with real account numbers
+    "codeaccount": "000000000000",
+    "infraaccount": "000000000000",
+
