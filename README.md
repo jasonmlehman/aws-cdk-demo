@@ -38,8 +38,13 @@ SSO session name (Recommended): **cwh**\
 CLI default client Region [None]: *Enter your region**\
 CLI default output format {None]: **json**
 
-  ## Create CodeCommit repository
+## Create CodeCommit repository
 
 > 1. Using the aws CLI, create the repository in the platform account:
   
   **aws codecommit create-repository --repository-name cdk-demo-repo --repository-description "CDK Demo repo" --profile cdk-demo-platform**
+  
+## Clone the repository locally.  This uses GRC, the syntax is of the form: git clone codecommit::**region**://**profile**@**repository name**:
+
+> 1. **git clone codecommit::us-east-1://cdk-demo-platform@cdk-wks-setup**
+
