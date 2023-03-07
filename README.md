@@ -55,14 +55,14 @@ This uses GRC syntax, the syntax is of the form: git clone codecommit::**region*
 > 1. Change to the folder the project was cloned to.  i.e. **cd \source\cdk-demo-repo**
 > 2. Initialize the folder with python dev stack: **cdk init --language python**
   
-## Activate the virtual environment
+## Activate the Virtual Environment
 
 > 1. Run: **.venv\Scripts\activate.bat**
 
-## Install requirements
+## Install Requirements
 
 > 1. Run: **pip install -r requirements.txt**
 
-## Bootstrap Platform account
+## Bootstrap Platform Account
   
 > 1. Run: **cdk bootstrap --profile cdk-demo-platform**
