@@ -82,7 +82,7 @@ Syntax for the trust is: **cdk bootstrap --profile awsprofile --cloudformation-e
 
 cdk.json is going to contain all parameter that are consumed by the constructs and app.py entry point
 
-> 1. Add the following section to the "context" section of cdk.json, replacing 0's with real account numbers
-    "codeaccount": "000000000000",
+> 1. Add the following section to the "context" section of cdk.json, replacing 0's with real account numbers.\
+    "codeaccount": "000000000000",\
     "infraaccount": "000000000000",
 
