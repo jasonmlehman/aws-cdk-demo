@@ -86,4 +86,11 @@ cdk.json is going to contain all parameter that are consumed by the constructs a
 >
     "codeaccount": "000000000000",\
     "infraaccount": "000000000000",
+    
+## Mono Repo
+ 
+ > 1. Create a folder called "Infra" in the root of the repo: ** mkdir c:\source\cdk-demo-repo\infra
+
+
+
 
