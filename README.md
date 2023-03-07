@@ -50,3 +50,8 @@ This uses GRC syntax, the syntax is of the form: git clone codecommit::**region*
 > 1. Change to the directoyr of the folder you wish to clone the repository to.  i.e. c:\source
 > 2. Clone the repo: **git clone codecommit::us-east-1://cdk-demo-platform@cdk-demo-repo**
 
+## Create a new CDK project within folder cloned from previous step
+
+> 1. Change to the folder the project was cloned to.  i.e. **cd \source\cdk-demo-repo**
+> 2. Initialize the folder with python dev stack: **cdk init --language python**
+
