@@ -27,7 +27,7 @@ SSO registration scopes [sso:account:access]: **<Leave blank>**
 > 3. Add AWS SSO Platform Profile to session: **aws configure sso --profile cdk-demo-platform**
 
 SSO session name (Recommended): **<Name your SSO Session**\
-<Scroll through the list of accounts and select the platform account]\
+<Scroll through the list of accounts and select the platform account>\
 CLI default client Region [None]: **<Enter your region>**\
 CLI default output format {None]: **json**
 
