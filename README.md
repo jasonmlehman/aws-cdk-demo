@@ -16,4 +16,24 @@ It includes all steps to how this repository and deployment pipelines were built
 ## AWS SSO Setup
 Configuration of the CLI with a profile will be dependent on the setup of your environment.  This will be geared towards AWS SSO integrated with Azure AAD.
 
-> 1. 
+> 1. Open a windows command prompt
+> 2. Add AWS SSO session: **aws configure sso-session**
+
+SSO session name: **<Name your SSO Session**
+SSO start URL [None]: **<Enter your start URL for your org**
+SSO region [None]: **<Enter your region>**
+SSO registration scopes [sso:account:access]: **<Leave blank>**
+
+> 3. Add AWS SSO Platform Profile to session: **aws configure sso --profile cdk-demo-platform**
+
+SSO session name (Recommended): **<Name your SSO Session**
+<Scroll through the list of accounts and select the platform account]
+CLI default client Region [None]: **<Enter your region>**
+CLI default output format {None]: **json**
+
+> 4. Add AWS SSO Dev Profile to session: **aws configure sso --profile cdk-demo-dev**
+
+SSO session name (Recommended): **cwh**
+<Scroll through the list of accounts and select the dev account>
+CLI default client Region [None]: **us-east-1**
+CLI default output format {None]: **json**
