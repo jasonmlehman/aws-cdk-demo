@@ -63,3 +63,6 @@ This uses GRC syntax, the syntax is of the form: git clone codecommit::**region*
 
 > 1. Run: **pip install -r requirements.txt**
 
+## Bootstrap Platform account
+  
+> 1. Run: ** cdk bootstrap --profile cdk-demo-platform
