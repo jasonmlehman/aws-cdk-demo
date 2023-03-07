@@ -89,8 +89,18 @@ cdk.json is going to contain all parameter that are consumed by the constructs a
     
 ## Mono Repo
  
- > 1. Create a folder called "Infra" in the root of the repo: ** mkdir c:\source\cdk-demo-repo\infra
+> 1. Create a folder called "Infra" in the root of the repo: **mkdir c:\source\cdk-demo-repo\infra**
 
+## Add tags.json file to root of repository (see repo)
+
+CDK will tag everything it deploys with tags defined in the tags.json. 
+
+## Update repository
+
+> 1.  Update app.py
+> 2.  Add infra\pipeline_stack.py
+> 3.  Add infra\utilities.py
+> 4.  Add infra\application-stage.py
 
 
 
