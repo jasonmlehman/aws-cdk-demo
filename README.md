@@ -111,5 +111,5 @@ After you have done all that you should be good to go.  If you run the following
 
 If you're using visual studio code, just add the aws-toolkit, then add your local repository folder.
 
-#DONE
+# Done - Now you can modify the pipeline to do whatever you want
 
