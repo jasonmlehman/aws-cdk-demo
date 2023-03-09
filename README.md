@@ -97,10 +97,15 @@ CDK will tag everything it deploys with tags defined in the tags.json.
 
 ## Update repository
 
-> 1.  Update app.py
+> 1.  Update app.py (with parameters relative to your pipeline.)
 > 2.  Add infra\pipeline_stack.py
-> 3.  Add infra\utilities.py
 > 4.  Add infra\application-stage.py
+
+##  Deply CDK stack
+
+After you have done all that you should be good to go.  If you run the following command it should deploy a pipeline to your Platform account and a couple Lambda functions to your deploy accounts.
+
+> 1.  cdk deploy cdk-demo-stack --profile cdk-demo-platform
 
 
 
