@@ -5,8 +5,15 @@
 
 ## CDK Quickstart
 
-It includes all steps to how this repository and deployment pipelines were built, including the workstation setup.  The repository can simply be cloned locally and development can being after updating parameters particular to your app.
+See diagram above.  What is outlined in red is what this repository is applicable to.  There is an AWS Account for the "Platform" and there is an AWS account for the resouces a pipeline deploys to, which is a "Dev" account.  It can be extended to multiple environments easily, as the diagram illustrates.
 
+This document includes all steps to how this repository and pipeline were built, including the workstation setup.  This repository can simply be cloned locally and development can being after updating parameters particular to your app.  Parameters include, but are not limited to, the following:
+
+> 1.  Update the account numbers in cdk.json to reflect your platform/dev accounts.
+> 2.  Update the pipeline name variable in cdk.json to reflect what you want the base of your pipeline to be called.
+> 3.  To extend to more than just a dev account, add variables in the cdk.json for those accounts and uncomment the sections in app.py.
+> 4.  Each stack has an applicable "Context" in cdk.json.  Update these sections for your particular app.
+> 5.  To change the stacks your pipeline deploys, update the PipelineAppStage class.  
 
 ## Windows Workstation Setup - Note: You may need temporary administrator access
 
@@ -38,10 +45,12 @@ CLI default output format {None]: **json**
 
 > 4. Add AWS SSO Dev Profile to session: **aws configure sso --profile cdk-demo-dev**
 
-SSO session name (Recommended): **cwh**\
+SSO session name (Recommended): **SSOSessionName**\
 **Scroll through the list of accounts and select the dev account**\
 CLI default client Region [None]: *Enter your region**\
 CLI default output format {None]: **json**
+
+> **Note:  If you have to reathenticate your session, you do so by running the following(using dev as an example):  **aws sso login --profile cdk-demo-dev**
 
 ## Create CodeCommit repository
 
@@ -52,8 +61,8 @@ CLI default output format {None]: **json**
 ## Clone the repository locally.
 This uses GRC syntax, the syntax is of the form: git clone codecommit::**region**://**profile**@**repository name**:
  
-> 1. Change to the directoyr of the folder you wish to clone the repository to.  i.e. c:\source
-> 2. Clone the repo: **git clone codecommit::us-east-1://cdk-demo-platform@cdk-demo-repo**
+> 1. Change to the directory of the folder you wish to clone the repository to.  i.e. c:\source
+> 2. Clone the repo locally: **git clone codecommit::us-east-1://cdk-demo-platform@cdk-demo-repo**
 
 ## Create a new CDK project within folder cloned from previous step
 
@@ -74,12 +83,12 @@ This uses GRC syntax, the syntax is of the form: git clone codecommit::**region*
 
 ## Bootstrap Dev Account
 
-Since the whole goal here is to have CodeCommit and CDK Pipelines running in the platform account, but deploying to the Dev (test/prod) account, we need to bootstrap the Dev account so that it trusts the Platform account.  To do this you'll need the account number of the Platform and dev account.  You can get this by running the following command: \
+Since the whole goal here is to have CodeCommit and CDK Pipelines running in the platform account, but deploying to the Dev (test/prod) account, we need to bootstrap the Dev account so that it trusts the Platform account.  To do this you'll need the account number of the Platform and dev account.  You can get these by running the following commands: \
 
 aws sts get-caller-identity --query "Account" --profile cdk-demo-platform\
 aws sts get-caller-identity --query "Account" --profile cdk-demo-dev
 
-Syntax for the trust is: **cdk bootstrap --profile awsprofile --cloudformation-execution-policies 'arn:aws:iam::aws:policy/AdministratorAccess' --trust "Platform Account Number" aws://"Dev Account Number"/us-east-1**
+Syntax for the trust is: **cdk bootstrap --profile "Dev account profile name" --cloudformation-execution-policies 'arn:aws:iam::aws:policy/AdministratorAccess' --trust "Platform Account Number" aws://"Dev Account Number"/us-east-1**
 
 > 1. Bootstrap Dev account replacing 0's with real account number: **cdk bootstrap --profile cdk-demo-dev --cloudformation-execution-policies 'arn:aws:iam::aws:policy/AdministratorAccess' --trust 000000000000 aws://000000000000/us-east-1**
 
@@ -89,8 +98,8 @@ cdk.json is going to contain all parameter that are consumed by the constructs a
 
 > 1. Add the following section to the "context" section of cdk.json, replacing 0's with real account numbers.  These will be referenced in app.py\
 >
-    "codeaccount": "000000000000",\
-    "infraaccount": "000000000000",
+    "platformaccount": "000000000000",\
+    "devaccount": "000000000000",
     
 ## Mono Repo
  
@@ -102,19 +111,16 @@ CDK will tag everything it deploys with tags defined in the tags.json.
 
 ## Update repository
 
-> 1.  Update app.py (with parameters relative to your pipeline.)
-> 2.  Add infra\pipeline_stack.py
+> 1.  Update app.py
+> 2.  Add infra\pipeline_stack.py (You'll have to update parameters paritcular to your pipeline name, and be sure to update the context in cdk.json)
 > 4.  Add infra\application-stage.py
+> 5.  Add infra\lambda_stack.py
+> 6.  Add infra\demo-asset\index.py
 
-##  Deply CDK stack
+## Deploy the pipeline to the platform account
+Note:  The pipeline name is the name of the pipeline construct.  To view your construct simply type: **cdk ls** from the root of your repository.  Be sure to use the correct profile for the Platform account.
+> 1. Run: **cdk deploy demo-pipeline-dev --profile cdk-demo-platform**
 
-After you have done all that you should be good to go.  If you run the following command it should deploy a pipeline to your Platform account and a couple Lambda functions to your deploy accounts.
+## Quick tips
 
-> 1.  cdk deploy cdk-demo-stack --profile cdk-demo-platform
-
-## IDE setup
-
-If you're using visual studio code, just add the aws-toolkit, then add your local repository folder.
-
-# Done - Now you can modify the pipeline to do whatever you want
-
+> 1.  Pipelines are self mutating so you only need to deploy the pipeline ONCE, all subsequent deployments get triggered when there is a commit to master.
