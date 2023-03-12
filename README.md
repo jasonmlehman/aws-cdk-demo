@@ -1,6 +1,9 @@
+# Overview
+![alt text](./images/CDK-Demo-Pipeline.pdf)
+
 # CDK Quickstart
 
-It includes all steps to how this repository and deployment pipelines were built, including the workstation setup.  The repository can simply be cloned locally and development can being immediately.
+It includes all steps to how this repository and deployment pipelines were built, including the workstation setup.  The repository can simply be cloned locally and development can being after updating parameters particular to your app.
 
 
 ## Windows Workstation Setup - Note: You may need temporary administrator access
