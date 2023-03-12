@@ -1,5 +1,5 @@
 # Overview
-![alt text](./images/CDK-Demo-Pipeline.pdf)
+![alt text](./images/CDK-Demo-Pipeline.png)
 
 # CDK Quickstart
 
