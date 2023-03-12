@@ -1,12 +1,5 @@
 {
     "Project": "CDK Demo Repo",
     "BusinessUnit": "Operations",
-    "Application Name": "CDKDemo",
-    "Application Support team or Queue": "Hybrid Cloud Services",
-    "CreatedBy": "Jason Lehman",
-    "CreatedOn": "03-07-2023",
-    "Data Classification": "Public",
-    "Environment": "dev",
-    "support": "Hybrid Cloud Services",
-    "cost_center": "CC12345"
+    "Application Name": "CDKDemo"
 }
