@@ -110,5 +110,9 @@ After you have done all that you should be good to go.  If you run the following
 
 > 1.  cdk deploy cdk-demo-stack --profile cdk-demo-platform
 
+## IDE setup
 
+If you're using visual studio code, just add the aws-toolkit, then add your local repository folder.
+
+# Done - Now you can modify the pipeline to do whatever you want
 
