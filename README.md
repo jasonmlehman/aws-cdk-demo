@@ -1,7 +1,9 @@
 # Overview
+## Diagram
+
 ![alt text](./images/CDK-Demo-Pipeline.png)
 
-# CDK Quickstart
+## CDK Quickstart
 
 It includes all steps to how this repository and deployment pipelines were built, including the workstation setup.  The repository can simply be cloned locally and development can being after updating parameters particular to your app.
 
