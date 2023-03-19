@@ -131,22 +131,6 @@ class LambdaLayerPyStackv2(cdk.Stack):
                   compatible_runtimes = [_lambda.Runtime.PYTHON_3_8],
         )   
 
-#        lambdaLayer = _lambda.LayerVersion(
-#            self,
-#            "lambda-layer",
-#            code=_lambda.Code.from_asset(
-#                str(pathlib.Path(__file__).resolve().parent.joinpath("demo-lambda-python-layer/code")),
-#                
-#                bundling=BundlingOptions(
-#                    image=DockerImage(image="public.ecr.aws/sam/build-python3.9:latest-x86_64"), 
-#                     image=_lambda.Runtime.PYTHON_3_7.bundling_image,
-#                     user="root",
-#                    command=["bash", "-c", "pip install -r requirements.txt -t /asset-output && cp -au . /asset-output"],
-#                ),
-#            ),
-#            compatible_runtimes=[_lambda.Runtime.PYTHON_3_9],
-#        )
-
         lambda_function = Function(
             self,
             "Demo-py-Layer",
