@@ -19,7 +19,7 @@ This document includes all steps to how this repository and pipeline were built,
 
 ## Windows Workstation Setup - Note: You may need temporary administrator access
 
-> 1.  Download and Install the latest supported version of Python: **https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html**
+> 1.  Download and Install the latest supported version of Python: **https://www.python.org/downloads/**
 > 2.  Download and Install the latest version of Node.js: **https://nodejs.org/en/download/**
 > 3.  Download and Install the AWS CLI: **https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html**
 > 4.  Install Git for windows: **https://git-scm.com/download/win**
