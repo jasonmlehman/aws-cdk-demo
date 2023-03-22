@@ -4,9 +4,14 @@
 import aws_cdk as cdk
 from aws_cdk import RemovalPolicy, Duration
 from constructs import Construct
+<<<<<<< HEAD
 from aws_cdk.aws_s3 import Bucket, BlockPublicAccess, BucketEncryption, LifecycleRule
 from aws_cdk.aws_logs import RetentionDays
 from infra.utilities import get_removal_policy
+=======
+from aws_cdk.aws_s3 import Bucket, BlockPublicAccess, BucketEncryption
+from aws_cdk.aws_logs import RetentionDays
+>>>>>>> cf2cd67576b059b93ed875c724eee0074d3c3eb8
 
 class S3Stack(cdk.Stack):
     """
@@ -22,11 +27,14 @@ class S3Stack(cdk.Stack):
         """
         super().__init__(scope, construct_id, **kwargs)
 
+<<<<<<< HEAD
         # Create a lifecycle policy to satisfy Security Hub
         lifecycle_rule = LifecycleRule(
             expiration=cdk.Duration.days(context["expirationdays"])
         )
 
+=======
+>>>>>>> cf2cd67576b059b93ed875c724eee0074d3c3eb8
         # Get public access settings
         if context["block_public_access"].lower() == "false":
             block_public_access = BlockPublicAccess(
@@ -44,7 +52,12 @@ class S3Stack(cdk.Stack):
             encryption=BucketEncryption.S3_MANAGED,
             enforce_ssl=context["enforce_ssl"].lower() == "true",
             versioned=context["versioned"].lower() == "true",
+<<<<<<< HEAD
             removal_policy=get_removal_policy(context["removal_policy"]),
             public_read_access=context["publicreadaccess"].lower() == "true",
             lifecycle_rules = [lifecycle_rule]
+=======
+            removal_policy=RemovalPolicy.DESTROY,
+            public_read_access=context["publicreadaccess"].lower() == "true"
+>>>>>>> cf2cd67576b059b93ed875c724eee0074d3c3eb8
         )

@@ -13,11 +13,13 @@ This document includes all steps to how this repository and pipeline were built,
 > 2.  Update the pipeline name variable in cdk.json to reflect what you want the base of your pipeline to be called.
 > 3.  To extend to more than just a dev account, add variables in the cdk.json for those accounts and uncomment the sections in app.py.
 > 4.  Each stack has an applicable "Context" in cdk.json.  Update these sections for your particular app.
-> 5.  To change the stacks your pipeline deploys, update the PipelineAppStage class.  
+> 5.  To change the stacks your pipeline deploys, update the PipelineAppStage class.
+
+**Note:  This repo is under constant development and without modification will install various AWS services to the Dev account.  To pick and choose what services you wish to install, update the infra\application_stage.py stack and remove unwanted classes.**
 
 ## Windows Workstation Setup - Note: You may need temporary administrator access
 
-> 1.  Download and Install the latest supported version of Python: **https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html**
+> 1.  Download and Install the latest supported version of Python: **https://www.python.org/downloads/**
 > 2.  Download and Install the latest version of Node.js: **https://nodejs.org/en/download/**
 > 3.  Download and Install the AWS CLI: **https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html**
 > 4.  Install Git for windows: **https://git-scm.com/download/win**
@@ -61,12 +63,12 @@ CLI default output format {None]: **json**
 ## Clone the repository locally.
 This uses GRC syntax, the syntax is of the form: git clone codecommit::**region**://**profile**@**repository name**:
  
-> 1. Change to the directory of the folder you wish to clone the repository to.  i.e. c:\source
-> 2. Clone the repo locally: **git clone codecommit::us-east-1://cdk-demo-platform@cdk-demo-repo**
+> 1. Change to the directoyr of the folder you wish to clone the repository to.  i.e. c:\source
+> 2. Clone the repo: **git clone codecommit::us-east-1://cdk-demo-platform@cdk-demo-repo**
 
 ## Create a new CDK project within folder cloned from previous step
 
-> 1. Change to the folder the project was cloned to.  i.e. **cd \source\cdk-demo-repo**
+> 1. Change to the folder the project was cloned to locally:  i.e. **cd \source\cdk-demo-repo**
 > 2. Initialize the folder with python dev stack: **cdk init --language python**
   
 ## Activate the Virtual Environment
@@ -83,7 +85,7 @@ This uses GRC syntax, the syntax is of the form: git clone codecommit::**region*
 
 ## Bootstrap Dev Account
 
-Since the whole goal here is to have CodeCommit and CDK Pipelines running in the platform account, but deploying to the Dev (test/prod) account, we need to bootstrap the Dev account so that it trusts the Platform account.  To do this you'll need the account number of the Platform and dev account.  You can get these by running the following commands: \
+Since the whole goal here is to have CodeCommit and CDK Pipelines running in the platform account, but deploying to the Dev (test/prod) account, we need to bootstrap the Dev account so that it trusts the Platform account.  To do this you'll need the account number of the Platform and dev account.  You can get this by running the following command: \
 
 aws sts get-caller-identity --query "Account" --profile cdk-demo-platform\
 aws sts get-caller-identity --query "Account" --profile cdk-demo-dev
@@ -115,7 +117,8 @@ CDK will tag everything it deploys with tags defined in the tags.json.
 > 2.  Add infra\pipeline_stack.py (You'll have to update parameters paritcular to your pipeline name, and be sure to update the context in cdk.json)
 > 4.  Add infra\application-stage.py
 > 5.  Add infra\lambda_stack.py
-> 6.  Add infra\demo-asset\index.py
+> 6.  Add infra\s3_stack.py
+> 7.  Add all all infra\demo\* folders
 
 ## Deploy the pipeline to the platform account
 Note:  The pipeline name is the name of the pipeline construct.  To view your construct simply type: **cdk ls** from the root of your repository.  Be sure to use the correct profile for the Platform account.
@@ -123,4 +126,4 @@ Note:  The pipeline name is the name of the pipeline construct.  To view your co
 
 ## Quick tips
 
-> 1.  Pipelines are self mutating so you only need to deploy the pipeline ONCE, all subsequent deployments get triggered when there is a commit to master.
+> 1.  Pipelines are self mutating so you only need to deploy the pipeline ONCE, all subsuquenst deploysments get triggered when the REPO is pushed to.

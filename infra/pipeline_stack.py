@@ -35,11 +35,12 @@ class PipelineStack(cdk.Stack):
         pipeline = CodePipeline(self, "Pipeline", 
                         pipeline_name=context["pipeline_name"]+f"{stage}",
                         cross_account_keys=True,
-                        synth=ShellStep("Synth", 
+                        synth=ShellStep("Synth",
                             input=source,
                             commands=["npm install -g aws-cdk",
                                 "python -m pip install -r requirements.txt",
-                                "cdk synth"]))
+                                "cdk synth"]),
+                        docker_enabled_for_synth=True)
 
         appstage = PipelineAppStage(self,
                 f"DeployTo{stage}",

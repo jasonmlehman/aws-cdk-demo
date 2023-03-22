@@ -15,8 +15,9 @@
     ]
   },
   "context": {
-    "platformaccount": "000000000000",
-    "devaccount": "000000000000",
+    "pattern": "s3",
+    "platformaccount": "***********",
+    "devaccount": "**********",
     "pipelinename": "demo-pipeline",
     "@aws-cdk/aws-lambda:recognizeLayerVersion": true,
     "@aws-cdk/core:checkSecretUsage": true,
@@ -50,7 +51,11 @@
       "repo_name": "cdk-demo-repo",
       "repo_description": "Creates a Demo pipeline",
       "branch": "master",
+<<<<<<< HEAD
       "cdk_cli_version": "2.69.0",
+=======
+      "cdk_cli_version": "2.68.0",
+>>>>>>> cf2cd67576b059b93ed875c724eee0074d3c3eb8
       "pipeline_name": "DemoPipeline",
       "build_commands": ["echo Hello World"],
       "install_commands": ["pip3 install -r requirements.txt", "npm install -g aws-cdk"],
@@ -64,14 +69,22 @@
     },
    "s3": {
       "encryption_settings": "s3managed",
+<<<<<<< HEAD
       "bucket_name": "cdk-demo-bucket",
+=======
+      "bucket_name": "yours3bucketname",
+>>>>>>> cf2cd67576b059b93ed875c724eee0074d3c3eb8
       "removal_policy": "destroy",
       "block_public_access": "True",
       "enforce_ssl": "True",
       "versioned": "False",
       "publicreadaccess": "False",
+<<<<<<< HEAD
       "publicbucket": "False",
       "expirationdays": 1
+=======
+      "publicbucket": "False"
+>>>>>>> cf2cd67576b059b93ed875c724eee0074d3c3eb8
     },
    "lambda": {
       "app": "cdk-demo",
@@ -82,6 +95,7 @@
       "lambda_path": "infra/demo-asset",
       "lambda_handler": "index.handler",
       "lambda_zip": "infra/demo-lambda-python-layerv2/pyodbc-layer.zip"
+<<<<<<< HEAD
     },
    "apigateway": {
       "api_name": "cdk-demo",
@@ -100,6 +114,8 @@
       "lambda_code_pathv2": "infra/demo-lambda-python-layerv2/",
       "lambda_zip": "infra/demo-lambda-python-layerv2/pyodbc-layer.zip",
       "Cognito_Domain_Name": "cdk-demo-apilambda"
+=======
+>>>>>>> cf2cd67576b059b93ed875c724eee0074d3c3eb8
     }
   }
 }

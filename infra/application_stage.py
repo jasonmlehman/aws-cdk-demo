@@ -6,6 +6,9 @@ from constructs import Construct
 from aws_cdk import Environment, Stage, Tags
 from infra.lambda_stack import LambdaPyStack
 from infra.lambda_stack import LambdaNodeStack
+from infra.lambda_stack import LambdaLayerPyStackv1, LambdaLayerPyStackv2
+from infra.s3_stack import S3Stack
+
 import json
 
 class PipelineAppStage(Stage):
@@ -26,6 +29,7 @@ class PipelineAppStage(Stage):
         """
         super().__init__(scope, construct_id, **kwargs)
         lambdacontext = dict(self.node.try_get_context("lambda"))
+        s3context = dict(self.node.try_get_context("s3"))
 
         LambdaNodeStack(
             self,
@@ -38,6 +42,27 @@ class PipelineAppStage(Stage):
             self,
             f"{construct_id}-lambda-Py",
             lambdacontext,
+            stage,
+            env=env)
+
+        LambdaLayerPyStackv1(
+            self,
+            f"{construct_id}-lambda-LayerPyv1",
+            lambdacontext,
+            stage,
+            env=env)
+
+        LambdaLayerPyStackv2(
+            self,
+            f"{construct_id}-lambda-LayerPyv2",
+            lambdacontext,
+            stage,
+            env=env)
+
+        S3Stack(
+            self,
+            f"{construct_id}-S3",
+            s3context,
             stage,
             env=env)
 
