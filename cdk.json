@@ -50,20 +50,56 @@
       "repo_name": "cdk-demo-repo",
       "repo_description": "Creates a Demo pipeline",
       "branch": "master",
-      "cdk_cli_version": "2.67.0",
+      "cdk_cli_version": "2.69.0",
       "pipeline_name": "DemoPipeline",
       "build_commands": ["echo Hello World"],
       "install_commands": ["pip3 install -r requirements.txt", "npm install -g aws-cdk"],
       "synth_command": "cdk synth",
       "self_mutating": "True",
-      "project_name": "cdk-demo"
+      "project_name": "cdk-demo",
+      "manual_approval_dev": "False",
+      "manual_approval_test": "False",
+      "manual_approval_prod": "True",
+      "approval_role_arn": "NA"
+    },
+   "s3": {
+      "encryption_settings": "s3managed",
+      "bucket_name": "cdk-demo-bucket",
+      "removal_policy": "destroy",
+      "block_public_access": "True",
+      "enforce_ssl": "True",
+      "versioned": "False",
+      "publicreadaccess": "False",
+      "publicbucket": "False",
+      "expirationdays": 1
     },
    "lambda": {
-      "function_name": "FunctionName",
+      "app": "cdk-demo",
+      "function_name": "cdk-demo",
+      "lambda_layer_path": "infra/demo-lambda-python-layer/layer/",
+      "lambda_code_path": "infra/demo-lambda-python-layer/code/",
+      "lambda_code_pathv2": "infra/demo-lambda-python-layerv2/",
       "lambda_path": "infra/demo-asset",
       "lambda_handler": "index.handler",
-      "arnspec": "LambdaArn",
-      "lambda_zip": "infra/demo-asset/lambdaasset.zip"
+      "lambda_zip": "infra/demo-lambda-python-layerv2/pyodbc-layer.zip"
+    },
+   "apigateway": {
+      "api_name": "cdk-demo",
+      "log_retention": "one_day",
+      "log_removal_policy": "destroy",
+      "enable_tracing": "false"
+    },
+   "apilambacognito": {
+      "app_name": "cdk-demo-apilambdacognito",
+      "api_name": "cdk-demo-apilambdacognito",
+      "log_retention": "one_day",
+      "log_removal_policy": "destroy",
+      "enable_tracing": "false",
+      "lambda_handler": "index.handler",
+      "lambda_code_path": "infra/demo-lambda-python-layer/code/",
+      "lambda_code_pathv2": "infra/demo-lambda-python-layerv2/",
+      "lambda_zip": "infra/demo-lambda-python-layerv2/pyodbc-layer.zip",
+      "Cognito_Domain_Name": "cdk-demo-apilambda"
     }
   }
 }
